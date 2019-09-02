@@ -7,8 +7,10 @@ const model = Model.getModel()
 const view = View.getView()
 const controller = Controller.getController()
 
-const root = view.getRoot()
+controller.setModel(model)
+controller.setView(view)
 
-document.body.append(root)
 
-console.log(model.getTasks())
+
+document.body.append(view.getRoot())
+

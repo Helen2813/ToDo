@@ -18,6 +18,8 @@
             }
         ]
 
+        const watchers = []
+
         const api = {}
 
         api.getTasks = function getTasks () {
@@ -31,6 +33,14 @@
                 done: false
             })
             idCounter++
+
+            for (const watcher of watchers) {
+                watcher()
+            }
+        }
+
+        api.dispatch = function dispatch (callback) {//подписываемся на обновление данных
+            watchers.push(callback)
         }
 
         return api
